@@ -70,15 +70,15 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
                         .commit();
 
                 BodyPartFragment bodyFragment = new BodyPartFragment();
-                bodyFragment.setImageIds(AndroidImageAssets.getHeads());
+                bodyFragment.setImageIds(AndroidImageAssets.getBodies());
                 fragmentManager.beginTransaction()
-                        .add(R.id.head_container, bodyFragment)
+                        .add(R.id.body_container, bodyFragment)
                         .commit();
 
                 BodyPartFragment legFragment = new BodyPartFragment();
-                legFragment.setImageIds(AndroidImageAssets.getHeads());
+                legFragment.setImageIds(AndroidImageAssets.getLegs());
                 fragmentManager.beginTransaction()
-                        .add(R.id.head_container, legFragment)
+                        .add(R.id.leg_container, legFragment)
                         .commit();
             }
         } else {
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
                     break;
                 case 1:
 
-                    newFragment.setImageIds(AndroidImageAssets.getHeads());
+                    newFragment.setImageIds(AndroidImageAssets.getBodies());
                     newFragment.setListIndex(listIndex);
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.body_container, newFragment)
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
                     break;
                 case 2:
 
-                    newFragment.setImageIds(AndroidImageAssets.getHeads());
+                    newFragment.setImageIds(AndroidImageAssets.getLegs());
                     newFragment.setListIndex(listIndex);
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.leg_container, newFragment)

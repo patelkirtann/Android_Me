@@ -19,6 +19,7 @@ package com.example.android.android_me.ui;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.android.android_me.R;
 import com.example.android.android_me.data.AndroidImageAssets;
@@ -26,6 +27,8 @@ import com.example.android.android_me.data.AndroidImageAssets;
 // This activity will display a custom Android image composed of three body parts: head, body, and legs
 public class AndroidMeActivity extends AppCompatActivity {
 
+
+    private static final String TAG = "BodyPart Values";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,9 @@ public class AndroidMeActivity extends AppCompatActivity {
 
             // Set the list of image id's for the head fragment and set the position to the second image in the list
             headFragment.setImageIds(AndroidImageAssets.getHeads());
-            headFragment.setListIndex(1);
+            headFragment.setListIndex(getIntent().getIntExtra("headIndex",0));
+
+            Log.d(TAG, "head : " + getIntent().getIntExtra("headIndex",0));
 
             // Add the fragment to its container using a FragmentManager and a Transaction
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -56,12 +61,16 @@ public class AndroidMeActivity extends AppCompatActivity {
 
             BodyPartFragment bodyFragment = new BodyPartFragment();
             bodyFragment.setImageIds(AndroidImageAssets.getBodies());
+            bodyFragment.setListIndex(getIntent().getIntExtra("bodyIndex",0));
+            Log.d(TAG, "body: " + getIntent().getIntExtra("bodyIndex",0));
             fragmentManager.beginTransaction()
                     .add(R.id.body_container, bodyFragment)
                     .commit();
 
             BodyPartFragment legFragment = new BodyPartFragment();
             legFragment.setImageIds(AndroidImageAssets.getLegs());
+            legFragment.setListIndex(getIntent().getIntExtra("legIndex",0));
+            Log.d(TAG, "leg: " + getIntent().getIntExtra("legIndex",0));
             fragmentManager.beginTransaction()
                     .add(R.id.leg_container, legFragment)
                     .commit();

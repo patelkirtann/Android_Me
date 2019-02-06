@@ -115,6 +115,4 @@ public class BodyPartFragment extends Fragment {
         currentState.putIntegerArrayList(IMAGE_ID_LIST, (ArrayList<Integer>) mImageIds);
         currentState.putInt(LIST_INDEX, mListIndex);
     }
-
-
 }
